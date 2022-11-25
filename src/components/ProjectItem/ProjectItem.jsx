@@ -1,7 +1,13 @@
+import { Link } from "react-router-dom";
+
 import styles from "./ProjectItem.module.css";
 
 const ProjectItem = ({ title }) => {
-  return <div className={styles.item}>{title}</div>;
+  return (
+    <Link to="/todos">
+      <div className={styles.item}>{title}</div>
+    </Link>
+  );
 };
 
 export default ProjectItem;

@@ -1,0 +1,14 @@
+.item {
+  margin: 1rem auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  width: 80%;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgba(33, 136, 33, 0.486);
+}
+
+.item:hover {
+  background-color: antiquewhite;
+}

@@ -6,10 +6,10 @@ const Navigation = () => {
   return (
     <nav className={styles.navList}>
       <Link to="/projects">
-        <Button text="Все проекты" />
+        <Button text="All projects" />
       </Link>
       <Link to="/todos">
-        <Button text="Все задачи" />
+        <Button text="All todos" />
       </Link>
     </nav>
   );

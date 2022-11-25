@@ -1,0 +1,19 @@
+.list {
+  margin: 2rem auto;
+  width: 95vw;
+  height: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.column {
+  width: 25vw;
+  height: 500px;
+  border-left: solid rgba(24, 167, 67, 0.507) thin;
+  border-right: solid rgba(24, 167, 67, 0.507) thin;
+}
+
+h3 {
+  text-align: center;
+}

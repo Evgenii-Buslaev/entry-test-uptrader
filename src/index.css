@@ -23,3 +23,7 @@ textarea {
   outline: none;
   background: none;
 }
+
+a {
+  text-decoration: none;
+}
