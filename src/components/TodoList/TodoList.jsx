@@ -1,29 +1,18 @@
+import { useSelector } from "react-redux";
+
 import TodoItem from "../TodoItem/TodoItem";
 import styles from "./TodoList.module.css";
 
-const todos = {
-  queue: [
-    { title: "Learn Node.js", done: false },
-    { title: "Learn MongoDB", done: false },
-  ],
-  development: [
-    { title: "Learn TypeScript", done: false },
-    { title: "Do entry test", done: false },
-  ],
-  done: [
-    { title: "Public CV", done: true },
-    { title: "Get entry test", done: true },
-    { title: "Create react app", done: true },
-  ],
-};
-
 const TodoList = () => {
+  const todos = useSelector((state) => state);
+
   const { queue, development, done } = todos;
+
   return (
     <div className={styles.list}>
       <section className={styles.column}>
         <h3>Queue</h3>
-        {queue.map((todo) => (
+        {todos.queue.map((todo) => (
           <TodoItem key={Math.random()} title={todo.title} />
         ))}
       </section>
