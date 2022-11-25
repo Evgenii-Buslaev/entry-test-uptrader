@@ -17,3 +17,15 @@
 h3 {
   text-align: center;
 }
+
+@media (max-width: 900px) {
+  .column {
+    width: 30vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .column {
+    font-size: 0.8rem;
+  }
+}

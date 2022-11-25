@@ -9,3 +9,16 @@
   height: auto;
   border-bottom: solid rgba(24, 167, 67, 0.507) thin;
 }
+
+.imageBtn {
+  position: absolute;
+  top: 12px;
+  left: 1rem;
+  width: 40px;
+}
+
+@media (max-width: 700px) {
+  .imageBtn {
+    top: 90vh;
+  }
+}
