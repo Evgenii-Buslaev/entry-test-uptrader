@@ -1,0 +1,17 @@
+.item {
+  margin: 1rem 0.5rem;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  width: 80vw;
+  height: 50px;
+  font-size: 1.2rem;
+  background-color: rgba(22, 202, 202, 0.555);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.item:hover {
+  opacity: 0.7;
+  background-color: rgba(202, 139, 22, 0.555);
+}

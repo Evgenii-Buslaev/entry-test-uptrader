@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 
 import ProjectsList from "../ProjectsList/ProjectsList";
 import TodoList from "../TodoList/TodoList";
-import Button from "../../UI/Button/Button";
 
 const publicRoutes = [
   { title: "Проекты", path: "/projects", element: <ProjectsList /> },

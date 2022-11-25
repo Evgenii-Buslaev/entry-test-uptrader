@@ -6,7 +6,6 @@ const TodoList = () => {
       <section className={styles.column}></section>
       <section className={styles.column}></section>
       <section className={styles.column}></section>
-      <h1>TODO</h1>
     </div>
   );
 };
