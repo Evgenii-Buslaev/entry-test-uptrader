@@ -2,12 +2,18 @@ import TodoItem from "../TodoItem/TodoItem";
 import styles from "./TodoList.module.css";
 
 const todos = {
-  queue: [{ title: "Learn Node.js" }, { title: "Learn MongoDB" }],
-  development: [{ title: "Learn TypeScript" }, { title: "Do entry test" }],
+  queue: [
+    { title: "Learn Node.js", done: false },
+    { title: "Learn MongoDB", done: false },
+  ],
+  development: [
+    { title: "Learn TypeScript", done: false },
+    { title: "Do entry test", done: false },
+  ],
   done: [
-    { title: "Public CV" },
-    { title: "Get entry test" },
-    { title: "Create react app" },
+    { title: "Public CV", done: true },
+    { title: "Get entry test", done: true },
+    { title: "Create react app", done: true },
   ],
 };
 
@@ -30,7 +36,7 @@ const TodoList = () => {
       <section className={styles.column}>
         <h3>Done</h3>
         {done.map((todo) => (
-          <TodoItem key={Math.random()} title={todo.title} />
+          <TodoItem key={Math.random()} title={todo.title} done={todo.done} />
         ))}
       </section>
     </div>

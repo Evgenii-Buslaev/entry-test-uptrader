@@ -19,6 +19,9 @@
 
 @media (max-width: 700px) {
   .imageBtn {
+    text-align: center;
+    width: 100vw;
+    left: 0;
     top: 90vh;
   }
 }

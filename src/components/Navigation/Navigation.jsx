@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import Button from "../../UI/Button/Button";
+
 import home from "../../assets/icons/home.png";
+import projects from "../../assets/icons/projects.png";
+import todos from "../../assets/icons/todos.png";
 import styles from "./Navigation.module.css";
 
 const Navigation = () => {
@@ -10,10 +13,10 @@ const Navigation = () => {
         <img src={home} alt="homepage"></img>
       </Link>
       <Link to="/projects">
-        <Button text="All projects" />
+        <Button text="All projects" path={projects} alt="projects" />
       </Link>
       <Link to="/todos">
-        <Button text="All todos" />
+        <Button text="All todos" path={todos} alt="todos" />
       </Link>
     </nav>
   );
