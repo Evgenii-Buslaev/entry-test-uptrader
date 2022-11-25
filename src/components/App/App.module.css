@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  background-color: rgba(75, 196, 75, 0.466);
   transition-property: background-color;
   transition-duration: 1s;
 }
