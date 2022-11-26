@@ -5,9 +5,10 @@ import ProjectsList from "../ProjectsList/ProjectsList";
 import TodoList from "../TodoList/TodoList";
 
 const publicRoutes = [
-  { title: "Проекты", path: "/", element: <Home /> },
+  { title: "Главная", path: "/", element: <Home /> },
   { title: "Проекты", path: "/projects", element: <ProjectsList /> },
   { title: "Задачи", path: "/todos", element: <TodoList /> },
+  { title: "Задачи", path: "/:id", element: <TodoList /> },
 ];
 
 const AppRouter = () => {

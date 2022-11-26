@@ -1,17 +1,27 @@
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import TodoItem from "../TodoItem/TodoItem";
 import styles from "./TodoList.module.css";
 
 const TodoList = () => {
-  const todos = useSelector((state) => state.todoReducer.todos);
+  const params = useParams();
+
+  let todos;
+  if (params.id) {
+    todos = useSelector((state) =>
+      state.todoReducer.todos.find((elem) => +elem.id === +params.id)
+    );
+  } else {
+    todos = useSelector((state) => state.todoReducer.all);
+  }
   const { queue, development, done } = todos;
 
   return (
     <div className={styles.list}>
       <section className={styles.column}>
         <h3>Queue</h3>
-        {todos.queue.map((todo) => (
+        {queue.map((todo) => (
           <TodoItem key={Math.random()} title={todo.title} />
         ))}
       </section>

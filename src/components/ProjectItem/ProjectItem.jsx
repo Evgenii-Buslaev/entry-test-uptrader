@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import Button from "../../UI/Button/Button";
@@ -6,10 +7,12 @@ import Button from "../../UI/Button/Button";
 import { putProject, removeProject } from "../../handlers/projects/projects";
 
 import remove from "../../assets/icons/remove.png";
+import open from "../../assets/icons/to-todo.png";
 import styles from "./ProjectItem.module.css";
 
 const ProjectItem = ({ title, id }) => {
   const [itemTitle, setItemTitle] = useState(title);
+  const navigator = useNavigate();
 
   const dispatch = useDispatch();
   const item = useSelector((state) =>
@@ -37,6 +40,11 @@ const ProjectItem = ({ title, id }) => {
         path={remove}
         alt="remove project"
         click={() => removeProject(id, dispatch)}
+      />
+      <Button
+        path={open}
+        alt="open todo-list"
+        click={() => navigator(`/${id}`)}
       />
     </div>
   );

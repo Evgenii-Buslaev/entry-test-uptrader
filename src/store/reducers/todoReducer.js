@@ -2,6 +2,7 @@ import { INIT, CREATE_TODO } from "../actions/actions";
 
 const initalState = {
   todos: [],
+  all: { queue: [], development: [], done: [] },
 };
 
 export const todoReducer = (state = initalState, action) => {
