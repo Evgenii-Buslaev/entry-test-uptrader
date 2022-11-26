@@ -1,4 +1,7 @@
 import ProjectItem from "../ProjectItem/ProjectItem";
+import Button from "../../UI/Button/Button";
+
+import addProject from "../../assets/icons/add.png";
 import styles from "./ProjectsList.module.css";
 
 const projects = [
@@ -10,6 +13,8 @@ const projects = [
 const ProjectsList = () => {
   return (
     <div className={styles.list}>
+      <Button path={addProject} alt="add project" />
+
       {projects.map((project) => (
         <ProjectItem title={project.title} key={project.title} />
       ))}
