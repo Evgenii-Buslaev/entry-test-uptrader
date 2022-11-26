@@ -1,27 +1,18 @@
-import { CREATE, READ, UPDATE, DELETE } from "../actions/actions";
+import { INIT, CREATE_TODO } from "../actions/actions";
 
 const initalState = {
-  todos: {
-    queue: [
-      { title: "Learn Node.js", done: false },
-      { title: "Learn MongoDB", done: false },
-    ],
-    development: [
-      { title: "Learn TypeScript", done: false },
-      { title: "Do entry test", done: false },
-    ],
-    done: [
-      { title: "Public CV", done: true },
-      { title: "Get entry test", done: true },
-      { title: "Create react app", done: true },
-    ],
-  },
+  todos: [],
 };
 
 export const todoReducer = (state = initalState, action) => {
-  switch (action) {
-    case READ:
-      return state;
+  switch (action.type) {
+    case INIT:
+      return { ...state, todos: [...state.todos, action.data] };
+    case CREATE_TODO:
+      return {
+        ...state,
+        todos: [...state.todos.filter(elem.id !== action.data.id), action.data],
+      };
     default:
       return state;
   }
