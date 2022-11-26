@@ -1,18 +1,38 @@
-import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import Button from "../../UI/Button/Button";
 
-import { removeProject } from "../../handlers/projects/projects";
+import { putProject, removeProject } from "../../handlers/projects/projects";
 
 import remove from "../../assets/icons/remove.png";
 import styles from "./ProjectItem.module.css";
 
 const ProjectItem = ({ title, id }) => {
+  const [itemTitle, setItemTitle] = useState(title);
+
   const dispatch = useDispatch();
+  const item = useSelector((state) =>
+    state.projectReducer.projects.find((elem) => elem.id === id)
+  );
+
+  const updateItem = () => putProject(id, itemTitle, dispatch);
 
   return (
     <div className={styles.item}>
-      <h3>{title}</h3>
+      <input
+        className={styles.title}
+        value={itemTitle}
+        onChange={(e) => setItemTitle(e.target.value)}
+        onBlur={() => {
+          if (!itemTitle) {
+            alert("Title cannot be empty");
+            setItemTitle(item.title);
+            return;
+          }
+          updateItem();
+        }}
+      />
       <Button
         path={remove}
         alt="remove project"

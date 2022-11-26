@@ -1,6 +1,7 @@
 import {
   createProject,
   deleteProject,
+  updateProject,
 } from "../../store/action-creators/project";
 
 const submitProjectForm = (e, dispatch, toggleModal, title, setTitle) => {
@@ -25,4 +26,8 @@ const removeProject = (id, dispatch) => {
   dispatch(deleteProject(id));
 };
 
-export { submitProjectForm, removeProject };
+const putProject = (id, title, dispatch) => {
+  dispatch(updateProject(title, id));
+};
+
+export { submitProjectForm, removeProject, putProject };

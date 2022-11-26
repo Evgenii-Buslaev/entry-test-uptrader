@@ -15,6 +15,14 @@ export const projectReducer = (state = initalState, action) => {
         ...state,
         projects: state.projects.filter((elem) => elem.id !== action.data.id),
       };
+    case UPDATE:
+      return {
+        ...state,
+        projects: [
+          ...state.projects.filter((elem) => elem.id !== action.data.id),
+          action.data,
+        ],
+      };
     default:
       return state;
   }
