@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { useSelector } from "react-redux";
 import { ModalContext } from "../../context/context";
 
 import ProjectItem from "../ProjectItem/ProjectItem";
@@ -10,13 +11,8 @@ import Form from "../Form/Form";
 import addProject from "../../assets/icons/add.png";
 import styles from "./ProjectsList.module.css";
 
-const projects = [
-  { id: 1, title: "React" },
-  { id: 1, title: "Redux" },
-  { id: 1, title: "TypeScript" },
-];
-
 const ProjectsList = () => {
+  const projects = useSelector((state) => state.projects);
   const [projectName, setProjectName] = useState("");
   const form = [
     {
