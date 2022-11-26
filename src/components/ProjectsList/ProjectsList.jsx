@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { ModalContext } from "../../context/context";
 
 import ProjectItem from "../ProjectItem/ProjectItem";
@@ -8,12 +8,21 @@ import InputText from "../../UI/InputText/InputText";
 import Modal from "../Modal/Modal";
 import Form from "../Form/Form";
 
+import submitProjectForm from "../../handlers/forms/forms";
+
 import addProject from "../../assets/icons/add.png";
 import styles from "./ProjectsList.module.css";
 
 const ProjectsList = () => {
-  const projects = useSelector((state) => state.projects);
+  const projects = useSelector((state) => state.projectReducer.projects);
   const [projectName, setProjectName] = useState("");
+
+  const { state } = useContext(ModalContext);
+  const { modalOpenned, setModalOpenned } = state;
+  const toggleModal = () => setModalOpenned(!modalOpenned);
+
+  const dispatch = useDispatch();
+
   const form = [
     {
       element: (
@@ -27,15 +36,17 @@ const ProjectsList = () => {
     },
   ];
 
-  const { state } = useContext(ModalContext);
-  const { modalOpenned, setModalOpenned } = state;
-
-  const openModal = () => setModalOpenned(!modalOpenned);
+  const submitForm = (e) =>
+    submitProjectForm(e, dispatch, toggleModal, projectName);
 
   return (
     <div className={styles.list}>
-      <Button path={addProject} alt="add project" click={openModal} />
-      <Modal children={<Form list={form} action="Create project" />} />
+      <Button path={addProject} alt="add project" click={toggleModal} />
+      <Modal
+        children={
+          <Form list={form} action="Create project" submit={submitForm} />
+        }
+      />
       {projects.map((project) => (
         <ProjectItem title={project.title} key={project.title} />
       ))}
