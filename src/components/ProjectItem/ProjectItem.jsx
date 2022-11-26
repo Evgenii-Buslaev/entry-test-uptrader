@@ -1,17 +1,24 @@
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import Button from "../../UI/Button/Button";
+
+import { removeProject } from "../../handlers/projects/projects";
 
 import remove from "../../assets/icons/remove.png";
 import styles from "./ProjectItem.module.css";
 
-const ProjectItem = ({ title }) => {
+const ProjectItem = ({ title, id }) => {
+  const dispatch = useDispatch();
+
   return (
-    <Link to="/todos">
-      <div className={styles.item}>
-        <h3>{title}</h3>
-        <Button path={remove} alt="remove project" />
-      </div>
-    </Link>
+    <div className={styles.item}>
+      <h3>{title}</h3>
+      <Button
+        path={remove}
+        alt="remove project"
+        click={() => removeProject(id, dispatch)}
+      />
+    </div>
   );
 };
 

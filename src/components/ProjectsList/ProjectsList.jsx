@@ -8,7 +8,7 @@ import InputText from "../../UI/InputText/InputText";
 import Modal from "../Modal/Modal";
 import Form from "../Form/Form";
 
-import submitProjectForm from "../../handlers/forms/forms";
+import { submitProjectForm } from "../../handlers/projects/projects";
 
 import addProject from "../../assets/icons/add.png";
 import styles from "./ProjectsList.module.css";
@@ -18,12 +18,14 @@ const ProjectsList = () => {
   const [projectName, setProjectName] = useState("");
 
   const { state } = useContext(ModalContext);
-  const { modalOpenned, setModalOpenned } = state;
-  const toggleModal = () => setModalOpenned(!modalOpenned);
+  const toggleModal = () => state.setModalOpenned(!state.modalOpenned);
 
   const dispatch = useDispatch();
 
-  const form = [
+  const submitForm = (e) =>
+    submitProjectForm(e, dispatch, toggleModal, projectName, setProjectName);
+
+  const formComponents = [
     {
       element: (
         <InputText
@@ -36,19 +38,20 @@ const ProjectsList = () => {
     },
   ];
 
-  const submitForm = (e) =>
-    submitProjectForm(e, dispatch, toggleModal, projectName);
+  const modalChildren = (
+    <Form list={formComponents} action="Create project" submit={submitForm} />
+  );
 
   return (
     <div className={styles.list}>
       <Button path={addProject} alt="add project" click={toggleModal} />
-      <Modal
-        children={
-          <Form list={form} action="Create project" submit={submitForm} />
-        }
-      />
+      <Modal children={modalChildren} />
       {projects.map((project) => (
-        <ProjectItem title={project.title} key={project.title} />
+        <ProjectItem
+          id={project.id}
+          title={project.title}
+          key={project.title}
+        />
       ))}
     </div>
   );

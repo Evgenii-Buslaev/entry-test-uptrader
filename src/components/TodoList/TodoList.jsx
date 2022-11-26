@@ -4,8 +4,7 @@ import TodoItem from "../TodoItem/TodoItem";
 import styles from "./TodoList.module.css";
 
 const TodoList = () => {
-  const todos = useSelector((state) => state);
-
+  const todos = useSelector((state) => state.todoReducer.todos);
   const { queue, development, done } = todos;
 
   return (
