@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { ModalContext } from "../../context/context";
+
 import ProjectItem from "../ProjectItem/ProjectItem";
 import Button from "../../UI/Button/Button";
 
@@ -11,10 +14,14 @@ const projects = [
 ];
 
 const ProjectsList = () => {
+  const { state } = useContext(ModalContext);
+  const { modalOpenned, setModalOpenned } = state;
+
+  const openModal = () => setModalOpenned(!modalOpenned);
+
   return (
     <div className={styles.list}>
-      <Button path={addProject} alt="add project" />
-
+      <Button path={addProject} alt="add project" click={openModal} />
       {projects.map((project) => (
         <ProjectItem title={project.title} key={project.title} />
       ))}
