@@ -20,9 +20,17 @@ const ProjectItem = ({ title, id }) => {
   );
 
   const updateItem = () => putProject(id, itemTitle, dispatch);
+  let openTodos = () => navigator(`/${id}`);
 
   return (
-    <div className={styles.item}>
+    <div
+      className={styles.item}
+      onClick={(e) => {
+        if (e.target.tagName === "DIV") {
+          openTodos();
+        }
+      }}
+    >
       <input
         className={styles.title}
         value={itemTitle}
@@ -41,11 +49,7 @@ const ProjectItem = ({ title, id }) => {
         alt="remove project"
         click={() => removeProject(id, dispatch)}
       />
-      <Button
-        path={open}
-        alt="open todo-list"
-        click={() => navigator(`/${id}`)}
-      />
+      <Button path={open} alt="open todo-list" click={openTodos} />
     </div>
   );
 };

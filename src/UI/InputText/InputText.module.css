@@ -8,3 +8,9 @@
   border: solid rgb(29, 122, 134) thin;
   border-radius: 10px;
 }
+
+input:hover {
+  border-radius: 5px;
+  padding: 0.5rem;
+  border: solid rgb(29, 122, 134) thin;
+}
