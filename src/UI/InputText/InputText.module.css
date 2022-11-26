@@ -1,5 +1,10 @@
 .input {
+  margin: auto;
+  padding: 1rem;
   width: 90%;
   height: 50px;
-  border: solid black;
+  color: white;
+  font-size: 1rem;
+  border: solid rgb(29, 122, 134) thin;
+  border-radius: 10px;
 }
