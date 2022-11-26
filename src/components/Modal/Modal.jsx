@@ -5,21 +5,21 @@ import useModal from "../../hooks/useModal";
 import close from "../../assets/icons/close.png";
 import styles from "./Modal.module.css";
 
-const Modal = () => {
+const Modal = ({ children }) => {
   const { state } = useContext(ModalContext);
 
   const toggler = useModal();
 
   return state.modalOpenned ? (
-    <form className={styles.cont}>
-      <div className={styles.form}></div>
+    <div className={styles.cont}>
+      <div className={styles.form}>{children}</div>
       <img
         className={styles.close}
         src={close}
         alt="close wondow"
         onClick={toggler}
       ></img>
-    </form>
+    </div>
   ) : null;
 };
 

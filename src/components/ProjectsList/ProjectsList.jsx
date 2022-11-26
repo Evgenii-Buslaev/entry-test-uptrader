@@ -3,9 +3,14 @@ import { ModalContext } from "../../context/context";
 
 import ProjectItem from "../ProjectItem/ProjectItem";
 import Button from "../../UI/Button/Button";
+import InputText from "../../UI/InputText/InputText";
+import Modal from "../Modal/Modal";
+import Form from "../Form/Form";
 
 import addProject from "../../assets/icons/add.png";
 import styles from "./ProjectsList.module.css";
+
+const form = [{ element: <InputText /> }];
 
 const projects = [
   { id: 1, title: "React" },
@@ -22,6 +27,7 @@ const ProjectsList = () => {
   return (
     <div className={styles.list}>
       <Button path={addProject} alt="add project" click={openModal} />
+      <Modal children={<Form list={form} />} />
       {projects.map((project) => (
         <ProjectItem title={project.title} key={project.title} />
       ))}
