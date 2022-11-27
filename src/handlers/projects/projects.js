@@ -4,6 +4,8 @@ import {
   updateProject,
 } from "../../store/action-creators/project";
 
+import validateData from "../validate";
+
 import { initTodos } from "../../store/action-creators/todos";
 
 const submitProjectForm = (e, dispatch, toggleModal, title, setTitle) => {
@@ -15,14 +17,6 @@ const submitProjectForm = (e, dispatch, toggleModal, title, setTitle) => {
     toggleModal();
     setTitle("");
   }
-};
-
-const validateData = (data) => {
-  if (!data) {
-    alert("Please, fill in the gaps");
-    return false;
-  }
-  return true;
 };
 
 const removeProject = (id, dispatch) => {

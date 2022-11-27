@@ -10,9 +10,14 @@ export const todoReducer = (state = initalState, action) => {
     case INIT:
       return { ...state, todos: [...state.todos, action.data] };
     case CREATE_TODO:
+      const elem = state.todos.find((elem) => elem.id === action.data.id);
+      elem.queue.push(action.data);
       return {
         ...state,
-        todos: [...state.todos.filter(elem.id !== action.data.id), action.data],
+        todos: [
+          ...state.todos.filter((elem) => elem.id !== action.data.id),
+          elem,
+        ],
       };
     default:
       return state;

@@ -7,6 +7,6 @@ export function initTodos(id) {
 export function createTodo(id, title) {
   return {
     type: CREATE_TODO,
-    data: { id, todoId: Math.random(), title },
+    data: { id: +id, todoId: Math.random(), title },
   };
 }

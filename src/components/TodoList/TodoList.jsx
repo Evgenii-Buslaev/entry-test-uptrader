@@ -8,6 +8,7 @@ import InputText from "../../UI/InputText/InputText";
 import Modal from "../../components/Modal/Modal";
 import Form from "../Form/Form";
 import { ModalContext } from "../../context/context";
+import { submitTodoCreatingForm } from "../../handlers/todos/todos";
 
 import create from "../../assets/icons/create.png";
 import styles from "./TodoList.module.css";
@@ -18,6 +19,18 @@ const TodoList = () => {
 
   const { state } = useContext(ModalContext);
   const toggleModal = () => state.setModalOpenned(!state.modalOpenned);
+
+  const dispatch = useDispatch();
+
+  const submitForm = (e) =>
+    submitTodoCreatingForm(
+      e,
+      params.id,
+      dispatch,
+      toggleModal,
+      todoTitle,
+      setTodoTitle
+    );
 
   let todos;
   if (params.id) {
@@ -42,7 +55,9 @@ const TodoList = () => {
     },
   ];
 
-  const modalChildren = <Form list={formComponents} action="Create todo" />;
+  const modalChildren = (
+    <Form list={formComponents} action="Create todo" submit={submitForm} />
+  );
 
   return (
     <>
