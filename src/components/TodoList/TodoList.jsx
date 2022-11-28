@@ -3,9 +3,8 @@ import { useParams } from "react-router-dom";
 
 import TodoItem from "../TodoItem/TodoItem";
 import Button from "../../UI/Button/Button";
-import InputText from "../../UI/InputText/InputText";
 import Modal from "../../components/Modal/Modal";
-import Form from "../Form/Form";
+import FormWrapper from "../FormWrapper/FormWrapper";
 
 import useForm from "../../hooks/useForm";
 import { submitTodoCreatingForm } from "../../handlers/todos/todos";
@@ -31,27 +30,18 @@ const TodoList = () => {
   }
   const { queue, development, done } = todos;
 
-  const formComponents = [
-    {
-      element: (
-        <InputText
-          value={text}
-          change={setText}
-          text="Todo's title"
-          key="Todo's title"
-        />
-      ),
-    },
-  ];
-
-  const modalChildren = (
-    <Form list={formComponents} action="Create todo" submit={submitForm} />
-  );
+  const formData = {
+    value: text,
+    change: setText,
+    text: "Todo's title",
+    action: "Create todo",
+    submit: submitForm,
+  };
 
   return (
     <>
       <Button path={create} alt="create todo" click={toggleModal} />
-      <Modal children={modalChildren} />
+      <Modal children={<FormWrapper data={formData} />} />
       <div className={styles.list}>
         <section className={styles.column}>
           <h3>Queue</h3>
