@@ -1,5 +1,4 @@
-import { useState, useContext } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import TodoItem from "../TodoItem/TodoItem";
@@ -7,7 +6,8 @@ import Button from "../../UI/Button/Button";
 import InputText from "../../UI/InputText/InputText";
 import Modal from "../../components/Modal/Modal";
 import Form from "../Form/Form";
-import { ModalContext } from "../../context/context";
+
+import useForm from "../../hooks/useForm";
 import { submitTodoCreatingForm } from "../../handlers/todos/todos";
 
 import create from "../../assets/icons/create.png";
@@ -15,22 +15,11 @@ import styles from "./TodoList.module.css";
 
 const TodoList = () => {
   const params = useParams();
-  const [todoTitle, setTodoTitle] = useState("");
-
-  const { state } = useContext(ModalContext);
-  const toggleModal = () => state.setModalOpenned(!state.modalOpenned);
-
-  const dispatch = useDispatch();
+  const { state, toggleModal, dispatch } = useForm();
+  const { text, setText } = state;
 
   const submitForm = (e) =>
-    submitTodoCreatingForm(
-      e,
-      params.id,
-      dispatch,
-      toggleModal,
-      todoTitle,
-      setTodoTitle
-    );
+    submitTodoCreatingForm(e, params.id, dispatch, toggleModal, text, setText);
 
   let todos;
   if (params.id) {
@@ -46,8 +35,8 @@ const TodoList = () => {
     {
       element: (
         <InputText
-          value={todoTitle}
-          change={setTodoTitle}
+          value={text}
+          change={setText}
           text="Todo's title"
           key="Todo's title"
         />
