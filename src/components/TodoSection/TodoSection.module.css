@@ -1,0 +1,22 @@
+.column {
+  width: 25vw;
+  height: 500px;
+  border-left: solid rgba(24, 167, 67, 0.507) thin;
+  border-right: solid rgba(24, 167, 67, 0.507) thin;
+}
+
+h3 {
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .column {
+    width: 30vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .column {
+    font-size: 0.8rem;
+  }
+}

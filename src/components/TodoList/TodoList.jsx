@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import TodoItem from "../TodoItem/TodoItem";
+import TodoSection from "../../components/TodoSection/TodoSection";
 import Button from "../../UI/Button/Button";
 import Modal from "../../components/Modal/Modal";
 import FormWrapper from "../FormWrapper/FormWrapper";
@@ -14,6 +15,7 @@ import styles from "./TodoList.module.css";
 
 const TodoList = () => {
   const params = useParams();
+
   const { state, toggleModal, dispatch } = useForm();
   const { text, setText } = state;
 
@@ -43,40 +45,9 @@ const TodoList = () => {
       <Button path={create} alt="create todo" click={toggleModal} />
       <Modal children={<FormWrapper data={formData} />} />
       <div className={styles.list}>
-        <section className={styles.column}>
-          <h3>Queue</h3>
-          {queue.map((todo) => (
-            <TodoItem
-              projectId={todo.id}
-              todoId={todo.todoId}
-              key={Math.random()}
-              title={todo.title}
-            />
-          ))}
-        </section>
-        <section className={styles.column}>
-          <h3>Development</h3>
-          {development.map((todo) => (
-            <TodoItem
-              projectId={todo.id}
-              todoId={todo.todoId}
-              key={Math.random()}
-              title={todo.title}
-            />
-          ))}
-        </section>
-        <section className={styles.column}>
-          <h3>Done</h3>
-          {done.map((todo) => (
-            <TodoItem
-              projectId={todo.id}
-              todoId={todo.todoId}
-              key={Math.random()}
-              title={todo.title}
-              done={todo.done}
-            />
-          ))}
-        </section>
+        <TodoSection title="Queue" list={queue} />
+        <TodoSection title="Development" list={development} />
+        <TodoSection title="Done" list={done} />
       </div>
     </>
   );

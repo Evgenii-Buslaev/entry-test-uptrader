@@ -9,7 +9,10 @@ const TodoItem = ({ title, done, projectId, todoId }) => {
   const deleteItem = () => removeTodoItem(projectId, todoId, dispatch);
 
   return (
-    <div className={done ? `${styles.item} ${styles.done}` : styles.item}>
+    <div
+      className={done ? `${styles.item} ${styles.done}` : styles.item}
+      draggable={true}
+    >
       {title}
       <img
         src={remove}

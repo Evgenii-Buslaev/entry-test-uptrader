@@ -28,10 +28,6 @@
   background-color: antiquewhite;
 }
 
-.item:active {
-  cursor: grab;
-}
-
 @media (max-width: 700px) {
   .remove {
     width: 15px;
