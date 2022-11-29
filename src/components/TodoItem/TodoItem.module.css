@@ -15,6 +15,10 @@
   background-color: rgba(85, 87, 85, 0.486);
 }
 
+.dragging {
+  box-shadow: 0 2px 3px gray;
+}
+
 .remove {
   width: 20px;
   cursor: pointer;
