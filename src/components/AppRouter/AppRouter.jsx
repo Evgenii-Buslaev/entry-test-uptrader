@@ -7,7 +7,6 @@ import TodoList from "../TodoList/TodoList";
 const publicRoutes = [
   { title: "Главная", path: "/", element: <Home /> },
   { title: "Проекты", path: "/projects", element: <ProjectsList /> },
-  { title: "Задачи", path: "/todos", element: <TodoList /> },
   { title: "Задачи", path: "/:id", element: <TodoList /> },
 ];
 

@@ -15,9 +15,6 @@ const Navigation = () => {
       <Link to="/projects">
         <Button text="All projects" path={projects} alt="projects" />
       </Link>
-      <Link to="/todos">
-        <Button text="All todos" path={todos} alt="todos" />
-      </Link>
     </nav>
   );
 };

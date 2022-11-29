@@ -7,7 +7,28 @@ import styles from "./TodoItem.module.css";
 const TodoItem = ({ data, drop, section }) => {
   const { title, done, id, todoId } = data;
   const dispatch = useDispatch();
-  const deleteItem = () => removeTodoItem(id, todoId, dispatch);
+
+  const updateDropArray = () => {
+    const queue = drop.sections[0].section.filter(
+      (elem) => elem.todoId !== todoId
+    );
+    const development = drop.sections[1].section.filter(
+      (elem) => elem.todoId !== todoId
+    );
+    const done = drop.sections[2].section.filter(
+      (elem) => elem.todoId !== todoId
+    );
+    drop.setSections([
+      { id: 0, section: queue },
+      { id: 1, section: development },
+      { id: 2, section: done },
+    ]);
+  };
+
+  const deleteItem = () => {
+    removeTodoItem(id, todoId, dispatch);
+    updateDropArray();
+  };
 
   const {
     dragOverHandler,

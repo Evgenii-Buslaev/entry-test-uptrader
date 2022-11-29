@@ -15,21 +15,15 @@ import useDrapDrop from "../../hooks/useDragDrop";
 
 const TodoList = () => {
   const params = useParams();
-
   const { state, toggleModal, dispatch } = useForm();
   const { text, setText } = state;
 
   const submitForm = (e) =>
     submitTodoCreatingForm(e, params.id, dispatch, toggleModal, text, setText);
 
-  let todos;
-  if (params.id) {
-    todos = useSelector((state) =>
-      state.todoReducer.todos.find((elem) => +elem.id === +params.id)
-    );
-  } else {
-    todos = useSelector((state) => state.todoReducer.all);
-  }
+  const todos = useSelector((state) =>
+    state.todoReducer.todos.find((elem) => +elem.id === +params.id)
+  );
   const { queue, development, done } = todos;
 
   const dragDrop = useDrapDrop([

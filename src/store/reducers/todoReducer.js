@@ -7,7 +7,6 @@ import {
 
 const initalState = {
   todos: [],
-  all: { queue: [], development: [], done: [] },
 };
 
 export const todoReducer = (state = initalState, action) => {

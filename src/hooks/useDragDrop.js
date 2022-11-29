@@ -1,9 +1,21 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { updateAllColumns } from "../handlers/todos/todos";
 
-const useDrapDrop = (array) => {
-  const [sections, setSections] = useState(array);
+const useDrapDrop = () => {
+  const params = useParams();
+
+  const todos = useSelector((state) =>
+    state.todoReducer.todos.find((elem) => +elem.id === +params.id)
+  );
+  const { queue, development, done } = todos;
+
+  const [sections, setSections] = useState([
+    { id: 0, section: queue },
+    { id: 1, section: development },
+    { id: 2, section: done },
+  ]);
   const [currentSection, setCurrentSection] = useState(null);
   const [currentItem, setCurrentItem] = useState(null);
   const dispatch = useDispatch();
@@ -58,6 +70,7 @@ const useDrapDrop = (array) => {
     dragEndHandler,
     dropCardHandler,
     sections,
+    setSections,
   };
 };
 
