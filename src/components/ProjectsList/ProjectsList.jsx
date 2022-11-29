@@ -30,7 +30,7 @@ const ProjectsList = () => {
   return (
     <div className={styles.list}>
       <Button path={addProject} alt="add project" click={toggleModal} />
-      <Modal children={<FormWrapper data={formData} />} />
+      <Modal children={<FormWrapper type="project" data={formData} />} />
       {projects.map((project) => (
         <ProjectItem
           id={project.id}

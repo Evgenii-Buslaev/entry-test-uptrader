@@ -26,11 +26,7 @@ const TodoList = () => {
   );
   const { queue, development, done } = todos;
 
-  const dragDrop = useDrapDrop([
-    { id: 0, section: queue },
-    { id: 1, section: development },
-    { id: 2, section: done },
-  ]);
+  const dragDrop = useDrapDrop();
 
   const formData = {
     value: text,
@@ -43,7 +39,7 @@ const TodoList = () => {
   return (
     <>
       <Button path={create} alt="create todo" click={toggleModal} />
-      <Modal children={<FormWrapper data={formData} />} />
+      <Modal children={<FormWrapper type="create_todo" data={formData} />} />
       <div className={styles.list}>
         <TodoSection title="Queue" list={queue} drop={dragDrop} />
         <TodoSection title="Development" list={development} drop={dragDrop} />
