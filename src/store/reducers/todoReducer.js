@@ -1,4 +1,9 @@
-import { INIT, CREATE_TODO, DELETE_TODO } from "../actions/actions";
+import {
+  INIT,
+  CREATE_TODO,
+  DELETE_TODO,
+  UPDATE_TODOS,
+} from "../actions/actions";
 
 const initalState = {
   todos: [],
@@ -9,6 +14,7 @@ export const todoReducer = (state = initalState, action) => {
   switch (action.type) {
     case INIT:
       return { ...state, todos: [...state.todos, action.data] };
+
     case CREATE_TODO:
       const elem = state.todos.find((elem) => elem.id === action.data.id);
       elem.queue.push(action.data);
@@ -19,8 +25,8 @@ export const todoReducer = (state = initalState, action) => {
           elem,
         ],
       };
+
     case DELETE_TODO:
-      console.log("invoked");
       const targetProject = state.todos.find(
         (elem) => elem.id === action.data.id
       );
@@ -35,9 +41,6 @@ export const todoReducer = (state = initalState, action) => {
       );
       const filteredElem = { id: targetProject.id, queue, development, done };
 
-      console.log(queue);
-      console.log(action.data.todoId);
-
       return {
         ...state,
         todos: [
@@ -45,6 +48,21 @@ export const todoReducer = (state = initalState, action) => {
           filteredElem,
         ],
       };
+
+    case UPDATE_TODOS:
+      return {
+        ...state,
+        todos: [
+          ...state.todos.filter((elem) => elem.id !== action.data.id),
+          {
+            id: +action.data.id,
+            queue: action.data.sections[0],
+            development: action.data.sections[1],
+            done: action.data.sections[2],
+          },
+        ],
+      };
+
     default:
       return state;
   }

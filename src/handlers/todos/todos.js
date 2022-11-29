@@ -1,4 +1,8 @@
-import { createTodo, deleteTodo } from "../../store/action-creators/todos";
+import {
+  createTodo,
+  deleteTodo,
+  updateTodos,
+} from "../../store/action-creators/todos";
 import validateData from "../validate";
 
 const submitTodoCreatingForm = (
@@ -21,4 +25,8 @@ const removeTodoItem = (id, todoId, dispatch) => {
   dispatch(deleteTodo(id, todoId));
 };
 
-export { submitTodoCreatingForm, removeTodoItem };
+const updateAllColumns = (id, sections, dispatch) => {
+  dispatch(updateTodos(id, sections));
+};
+
+export { submitTodoCreatingForm, removeTodoItem, updateAllColumns };
