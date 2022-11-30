@@ -2,6 +2,7 @@ import {
   INIT,
   CREATE_TODO,
   DELETE_TODO,
+  UPDATE_TODOS_SECTIONS,
   UPDATE_TODOS,
 } from "../actions/actions";
 
@@ -48,7 +49,7 @@ export const todoReducer = (state = initalState, action) => {
         ],
       };
 
-    case UPDATE_TODOS:
+    case UPDATE_TODOS_SECTIONS:
       return {
         ...state,
         todos: [
@@ -59,6 +60,14 @@ export const todoReducer = (state = initalState, action) => {
             development: action.data.sections[1],
             done: action.data.sections[2],
           },
+        ],
+      };
+    case UPDATE_TODOS:
+      return {
+        ...state,
+        todos: [
+          ...state.todos.filter((elem) => elem.id !== action.data.id),
+          action.data,
         ],
       };
 

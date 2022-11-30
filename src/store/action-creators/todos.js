@@ -2,6 +2,7 @@ import {
   INIT,
   CREATE_TODO,
   DELETE_TODO,
+  UPDATE_TODOS_SECTIONS,
   UPDATE_TODOS,
 } from "../actions/actions";
 
@@ -23,9 +24,17 @@ export function deleteTodo(id, todoId) {
   };
 }
 
-export function updateTodos(id, sections) {
+export function updateTodosSections(id, sections) {
+  return {
+    type: UPDATE_TODOS_SECTIONS,
+    data: { id: Number(id), sections },
+  };
+}
+
+export function updateTodos(todos) {
+  const { id, queue, development, done } = todos;
   return {
     type: UPDATE_TODOS,
-    data: { id: Number(id), sections },
+    data: { id, queue, development, done },
   };
 }

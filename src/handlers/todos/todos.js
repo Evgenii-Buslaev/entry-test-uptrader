@@ -1,6 +1,7 @@
 import {
   createTodo,
   deleteTodo,
+  updateTodosSections,
   updateTodos,
 } from "../../store/action-creators/todos";
 import validateData from "../validate";
@@ -26,7 +27,7 @@ const removeTodoItem = (id, todoId, dispatch) => {
 };
 
 const updateAllColumns = (id, sections, dispatch) => {
-  dispatch(updateTodos(id, sections));
+  dispatch(updateTodosSections(id, sections));
 };
 
 const updateDropArray = (state, id) => {
@@ -42,9 +43,14 @@ const updateDropArray = (state, id) => {
   ]);
 };
 
+const updateTodosProps = (todos, dispatch) => {
+  dispatch(updateTodos(todos));
+};
+
 export {
   submitTodoCreatingForm,
   removeTodoItem,
   updateAllColumns,
   updateDropArray,
+  updateTodosProps,
 };

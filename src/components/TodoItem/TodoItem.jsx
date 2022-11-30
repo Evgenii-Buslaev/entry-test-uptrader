@@ -17,10 +17,6 @@ const TodoItem = ({ data, drop, section }) => {
   const todo = useSelector((state) =>
     state.todoReducer.todos.find((elem) => elem.id === id)
   );
-  const targetTodo =
-    todo.queue.find((todo) => todo.todoId === todoId) ||
-    todo.development.find((todo) => todo.todoId === todoId) ||
-    todo.done.find((todo) => todo.todoId === todoId);
 
   const deleteItem = () => {
     removeTodoItem(id, todoId, dispatch);
@@ -53,7 +49,7 @@ const TodoItem = ({ data, drop, section }) => {
     >
       {title}
       <Modal
-        children={<TodoForm todo={targetTodo} />}
+        children={<TodoForm todo={todo} targetId={todoId} />}
         openned={modalOpenned}
         toggler={toggleOpenned}
       />
