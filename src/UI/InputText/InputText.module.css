@@ -1,16 +1,20 @@
 .input {
-  margin: auto;
+  margin: 0.5rem auto;
   padding: 1rem;
   width: 90%;
   height: 50px;
   color: white;
   font-size: 1rem;
-  border: solid rgb(29, 122, 134) thin;
+  border: solid rgba(209, 182, 133, 0.938) thin;
   border-radius: 10px;
 }
 
 input:hover {
   border-radius: 5px;
   padding: 0.5rem;
-  border: solid rgb(29, 122, 134) thin;
+  border: solid rgba(238, 223, 197, 0.938) thin;
+}
+
+input::placeholder {
+  color: rgb(44, 40, 40);
 }

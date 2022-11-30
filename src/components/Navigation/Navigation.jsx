@@ -13,7 +13,7 @@ const Navigation = () => {
         <img src={home} alt="homepage"></img>
       </Link>
       <Link to="/projects">
-        <Button text="All projects" path={projects} alt="projects" />
+        <Button text="Projects" path={projects} alt="projects" />
       </Link>
     </nav>
   );
