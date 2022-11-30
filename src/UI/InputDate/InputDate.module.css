@@ -1,0 +1,44 @@
+.cont {
+  margin: 0.5rem auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 320px;
+}
+
+.date {
+  width: 140px;
+  padding: 0.5rem;
+  border: solid rgba(209, 182, 133, 0.938) thin;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.date:hover {
+  border-radius: 5px;
+  border: solid rgba(238, 223, 197, 0.938) thin;
+}
+
+.date::placeholder {
+  color: rgb(44, 40, 40);
+}
+
+@media (max-width: 500px) {
+  .cont {
+    width: 250px;
+  }
+  label {
+    width: 100px;
+  }
+}
+
+@media (max-width: 500px) {
+  .date,
+  label {
+    font-size: 1rem;
+  }
+
+  .cont {
+    width: 220px;
+  }
+}

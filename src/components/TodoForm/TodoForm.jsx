@@ -1,14 +1,23 @@
 import { useDispatch } from "react-redux";
 
 import InputText from "../../UI/InputText/InputText";
+import InputDate from "../../UI/InputDate/InputeDate";
 import { updateTodosProps } from "../../handlers/todos/todos";
 
 import styles from "./TodoForm.module.css";
 import useUpdate from "../../hooks/useUpdate";
 
 const TodoForm = ({ todo, targetId }) => {
-  const { state, updatedTodos } = useUpdate(todo, targetId);
-  const { title, setTitle, description, setDescription } = state;
+  const { state, updatedTodos, updatedElem } = useUpdate(todo, targetId);
+  const {
+    title,
+    setTitle,
+    description,
+    setDescription,
+    deadline,
+    setDeadline,
+  } = state;
+  const { created } = updatedElem;
 
   const dispatch = useDispatch();
 
@@ -25,6 +34,20 @@ const TodoForm = ({ todo, targetId }) => {
         value={description}
         change={setDescription}
       />
+      <InputDate
+        name="created"
+        label="Created at:"
+        dateString={created}
+        disabled={true}
+      />
+      <InputDate
+        name="deadline"
+        label="Do till:"
+        dateString={deadline}
+        change={setDeadline}
+        disabled={false}
+      />
+
       <button type="submit" className={styles.submit}>
         Save changes
       </button>

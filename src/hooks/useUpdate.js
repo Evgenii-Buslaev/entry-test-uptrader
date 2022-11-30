@@ -9,13 +9,16 @@ const useUpdate = (todo, targetId) => {
     done.find((t) => t.todoId === targetId);
 
   const [title, setTitle] = useState(targetElem.title);
-  const [description, setDescription] = useState(targetElem.description || "");
+  const [description, setDescription] = useState(targetElem.description);
+  const [deadline, setDeadline] = useState(targetElem.deadline || "");
 
   const updatedElem = {
     id: id,
     todoId: targetId,
     title: title,
     description: description,
+    created: targetElem.created,
+    deadline: deadline,
   };
 
   const updatedTodos = {
@@ -45,8 +48,16 @@ const useUpdate = (todo, targetId) => {
   }
 
   return {
-    state: { title, setTitle, description, setDescription },
+    state: {
+      title,
+      setTitle,
+      description,
+      setDescription,
+      deadline,
+      setDeadline,
+    },
     updatedTodos,
+    updatedElem,
   };
 };
 

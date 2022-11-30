@@ -13,7 +13,18 @@ export function initTodos(id) {
 export function createTodo(id, title) {
   return {
     type: CREATE_TODO,
-    data: { id: Number(id), todoId: Math.random(), title },
+    data: {
+      id: Number(id),
+      todoId: Math.random(),
+      title,
+      description: "",
+      created: new Date()
+        .toLocaleString()
+        .split(",")[0]
+        .split(".")
+        .reverse()
+        .join("-"),
+    },
   };
 }
 
