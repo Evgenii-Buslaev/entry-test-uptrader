@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeTodoItem, updateDropArray } from "../../handlers/todos/todos";
 import useModal from "../../hooks/useModal";
 
@@ -13,6 +13,14 @@ const TodoItem = ({ data, drop, section }) => {
   const dispatch = useDispatch();
 
   const { title, done, id, todoId } = data;
+
+  const todo = useSelector((state) =>
+    state.todoReducer.todos.find((elem) => elem.id === id)
+  );
+  const targetTodo =
+    todo.queue.find((todo) => todo.todoId === todoId) ||
+    todo.development.find((todo) => todo.todoId === todoId) ||
+    todo.done.find((todo) => todo.todoId === todoId);
 
   const deleteItem = () => {
     removeTodoItem(id, todoId, dispatch);
@@ -35,7 +43,7 @@ const TodoItem = ({ data, drop, section }) => {
       onMouseEnter={(e) => dragStartHandler(e, section, data)}
       onClick={(e) => {
         dragStartHandler(e, section, data);
-        if (e.target.tagName !== "IMG") {
+        if (e.target.className.includes("item")) {
           toggleOpenned();
         }
       }}
@@ -45,7 +53,7 @@ const TodoItem = ({ data, drop, section }) => {
     >
       {title}
       <Modal
-        children={<TodoForm />}
+        children={<TodoForm todo={targetTodo} />}
         openned={modalOpenned}
         toggler={toggleOpenned}
       />
