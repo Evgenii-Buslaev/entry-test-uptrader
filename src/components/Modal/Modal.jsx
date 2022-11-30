@@ -1,22 +1,14 @@
-import { useContext } from "react";
-import { ModalContext } from "../../context/context";
-import useModal from "../../hooks/useModal";
-
 import close from "../../assets/icons/close.png";
 import styles from "./Modal.module.css";
 
-const Modal = ({ children }) => {
-  const { state } = useContext(ModalContext);
-
-  const toggler = useModal();
-
-  return state.modalOpenned ? (
+const Modal = ({ children, openned, toggler }) => {
+  return openned ? (
     <div className={styles.cont}>
       <div className={styles.form}>{children}</div>
       <img
         className={styles.close}
         src={close}
-        alt="close wondow"
+        alt="close window"
         onClick={toggler}
       ></img>
     </div>

@@ -17,7 +17,7 @@ const TodoForm = (todo) => {
         <InputText
           text="Todo's description"
           value={description}
-          change={setDescription}
+          change={(e) => setDescription(e.target.value)}
         />
       ),
     },
