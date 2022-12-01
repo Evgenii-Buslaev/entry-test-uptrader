@@ -1,5 +1,6 @@
 .cont {
   position: absolute;
+  padding: 3rem 0;
   top: 0;
   left: 0;
   display: flex;
@@ -7,6 +8,8 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
   background-color: rgba(2, 2, 2, 0.397);
 }
 

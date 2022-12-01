@@ -34,9 +34,9 @@ export function createTodo(id, title) {
           ? calculateDates(created) + " days"
           : calculateDates(created) + " day"
       }`,
-      status: "queue",
       subtasks: [],
       comments: [],
+      status: "queue",
     },
   };
 }

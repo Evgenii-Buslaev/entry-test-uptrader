@@ -47,6 +47,7 @@ const TodoForm = ({ todo, targetId }) => {
 
   return (
     <form className={styles.form} onSubmit={submit}>
+      <div className={styles.status}>Status: {targetElem.status}</div>
       <div className={styles.number}>{targetElem.number}.</div>
       <InputText text="Todo's title" value={title} change={setTitle} />
       <InputText
@@ -76,7 +77,6 @@ const TodoForm = ({ todo, targetId }) => {
         <div className={styles.number}>In work: {targetElem.inWork}</div>
       ) : null}
       <div className={styles.files}>{files}</div>
-      <div className={styles.status}>Status: {targetElem.status}</div>
       <InputFile change={setFiles} />
       <div className={styles.subtaskForm}>
         <InputText text="Subtask's title" value={subtask} change={setSubtask} />
