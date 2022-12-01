@@ -24,3 +24,37 @@
   font-size: 1.4rem;
   color: rgb(150, 8, 8);
 }
+
+.todoDates {
+  width: 40%;
+}
+
+.datesWrapper {
+  margin: 0.5rem auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.files {
+  width: 70%;
+  margin: 0.5rem auto;
+}
+
+@media (max-width: 1150px) {
+  .datesWrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .todoDates {
+    width: auto;
+  }
+}
+
+@media (max-width: 1000px) {
+  .number {
+    font-size: 1rem;
+  }
+}

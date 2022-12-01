@@ -1,0 +1,54 @@
+.cont {
+  margin: 0.5rem auto;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  width: auto;
+}
+
+.input:hover {
+  border: none;
+  padding: 0;
+}
+
+.input::before {
+  content: "Choose files";
+  display: inline-block;
+  font-size: 1rem;
+  font-family: inherit;
+  margin: 0.5rem 1rem;
+  padding: 0.7rem 1.2rem;
+  background-color: rgba(26, 85, 26, 0.63);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input::placeholder {
+  content: "Files are not chosen";
+}
+
+input::file-selector-button {
+  display: none;
+}
+
+input::file-selector-button:hover {
+  opacity: 0.5;
+}
+
+@media (max-width: 520px) {
+  .input::before {
+    font-size: 0.8rem;
+    margin: 0.5rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .input::before {
+    padding: 0.4rem 0.5rem;
+  }
+}

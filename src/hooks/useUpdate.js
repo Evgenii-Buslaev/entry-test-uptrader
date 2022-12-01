@@ -12,7 +12,8 @@ const useUpdate = (todo, targetId) => {
   const [title, setTitle] = useState(targetElem.title);
   const [description, setDescription] = useState(targetElem.description);
   const [deadline, setDeadline] = useState(targetElem.deadline || "");
-  const [importance, setImportance] = useState("");
+  const [importance, setImportance] = useState(targetElem.importance || "");
+  const [files, setFiles] = useState(targetElem.files || "");
 
   const updatedElem = {
     id: id,
@@ -28,6 +29,7 @@ const useUpdate = (todo, targetId) => {
         : calculateDates(targetElem.created) + " day"
     }`,
     importance: importance,
+    files: files,
   };
 
   const updatedTodos = {
@@ -66,6 +68,8 @@ const useUpdate = (todo, targetId) => {
       setDeadline,
       importance,
       setImportance,
+      files,
+      setFiles,
     },
     targetElem,
     updatedTodos,

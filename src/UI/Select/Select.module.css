@@ -1,7 +1,7 @@
 .cont {
   margin: 0.5rem auto;
   padding: 0 1rem;
-  width: 300px;
+  width: 40%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,4 +22,31 @@ select {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+@media (max-width: 1150px) {
+  .cont {
+    width: 80%;
+  }
+}
+
+@media (max-width: 520px) {
+  .cont {
+    margin: 0.5rem auto;
+    padding: 0 0.5rem;
+    width: 250px;
+  }
+  select {
+    font-size: 0.8rem;
+    margin: 0.5rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .cont {
+    width: 200px;
+  }
+  select {
+    padding: 0.4rem 0.5rem;
+  }
 }

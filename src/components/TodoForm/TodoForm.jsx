@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 
 import InputText from "../../UI/InputText/InputText";
 import InputDate from "../../UI/InputDate/InputeDate";
+import InputFile from "../../UI/InputFile/InputFile";
 import Select from "../../UI/Select/Select";
 import { updateTodosProps } from "../../handlers/todos/todos";
 
@@ -22,6 +23,8 @@ const TodoForm = ({ todo, targetId }) => {
     setDeadline,
     importance,
     setImportance,
+    files,
+    setFiles,
   } = state;
   const { created } = updatedElem;
 
@@ -41,23 +44,29 @@ const TodoForm = ({ todo, targetId }) => {
         value={description}
         change={setDescription}
       />
-      <InputDate
-        name="created"
-        label="Created at:"
-        dateString={created}
-        disabled={true}
-      />
-      <InputDate
-        name="deadline"
-        label="Do till:"
-        dateString={deadline}
-        change={setDeadline}
-        disabled={false}
-      />
+      <div className={styles.datesWrapper}>
+        <div className={styles.todoDates}>
+          <InputDate
+            name="created"
+            label="Created at:"
+            dateString={created}
+            disabled={true}
+          />
+          <InputDate
+            name="deadline"
+            label="Do till:"
+            dateString={deadline}
+            change={setDeadline}
+            disabled={false}
+          />
+        </div>
+        <Select value={importance} change={setImportance} />
+      </div>
       {targetElem.inWork ? (
         <div className={styles.number}>In work: {targetElem.inWork}</div>
       ) : null}
-      <Select value={importance} change={setImportance} />
+      <div className={styles.files}>{files}</div>
+      <InputFile change={setFiles} />
       <button type="submit" className={styles.submit}>
         Save changes
       </button>
