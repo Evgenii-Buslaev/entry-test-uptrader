@@ -1,0 +1,25 @@
+.cont {
+  margin: 0.5rem auto;
+  padding: 0 1rem;
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: solid rgba(209, 182, 133, 0.938) thin;
+  border-radius: 10px;
+}
+
+.cont:hover {
+  border-radius: 5px;
+  border: solid rgba(238, 223, 197, 0.938) thin;
+}
+
+select {
+  font-size: 1rem;
+  margin: 0.5rem 1rem;
+  padding: 0.7rem 1.2rem;
+  background-color: rgba(26, 85, 26, 0.63);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

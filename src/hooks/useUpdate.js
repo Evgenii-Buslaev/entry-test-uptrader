@@ -12,6 +12,7 @@ const useUpdate = (todo, targetId) => {
   const [title, setTitle] = useState(targetElem.title);
   const [description, setDescription] = useState(targetElem.description);
   const [deadline, setDeadline] = useState(targetElem.deadline || "");
+  const [importance, setImportance] = useState("");
 
   const updatedElem = {
     id: id,
@@ -26,6 +27,7 @@ const useUpdate = (todo, targetId) => {
         ? calculateDates(targetElem.created) + " days"
         : calculateDates(targetElem.created) + " day"
     }`,
+    importance: importance,
   };
 
   const updatedTodos = {
@@ -62,6 +64,8 @@ const useUpdate = (todo, targetId) => {
       setDescription,
       deadline,
       setDeadline,
+      importance,
+      setImportance,
     },
     targetElem,
     updatedTodos,
