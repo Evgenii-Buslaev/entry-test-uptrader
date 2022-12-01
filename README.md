@@ -1,12 +1,52 @@
-# Getting Started with Create React App
+# Тестовое задание "UpTrader"
+
+Описание тестового задания: https://github.com/UptraderTestTask/Junior-frontend.
+
+## Описание
+
+Фронтенд часть приложения списка задач.
+
+- #### Технологии
+  - HTML
+  - CSS
+  - JavaScript (ES6)
+  - React
+  - react-router-dom
+  - Redux
+
+* #### Функционал приложения
+
+1. Созданиe/удаление проекта. Навигационная панель приложения содержит кнопку "создать проект". Кликнув на нее, Вы можете открыть форму создания проекта.
+
+2. Создание задач. На странице проекта (динамический роут, соответствующий id проекта) распологается кнопка-карандаш, нажав на которую, Вы можете создать задачу. Ниже располагается доска с тремя колонками, содержащая в себе задачи. Перемещать задачи между колонками Вы модете посредством механизма 'Drag and drop'.
+
+3. Редактирование задачи. Кликнув на задачу можно открыть форму с полями ее свойств. Вы можете заполнять/редактировать содержимое задачи.
+
+4. Все проекты и задачи сохраняются в localStorage.
+
+- #### Архитектура
+
+  1. Приложение было написано с использованием функциональных компонентов. Для их создания я использовал синтаксис ES6.
+  2. В качестве глобального хранилища состояния была использована библиотека redux. Сохранение данных осуществлеяется в localStorage браузера посредством функций-редьюсеров стейт-менеджера.
+
+* #### Достижения
+
+  Повторил навыки использования базовых реакт-хуков и работу с состоянием с использованием стейт-менеджера Redux.
+
+* #### Деплоймент
+  Попробовать использование приложения можно по ссылке: https://evgenii-buslaev.github.io/entry-test-woman-up/.
+
+## Скрипты из документации
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+#### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -14,12 +54,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+#### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+#### `npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -29,7 +69,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+#### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
