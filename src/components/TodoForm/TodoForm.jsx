@@ -51,6 +51,9 @@ const TodoForm = ({ todo, targetId }) => {
         change={setDeadline}
         disabled={false}
       />
+      {targetElem.inWork ? (
+        <div className={styles.number}>In work: {targetElem.inWork}</div>
+      ) : null}
 
       <button type="submit" className={styles.submit}>
         Save changes

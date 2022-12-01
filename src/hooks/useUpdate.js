@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { calculateDates } from "../handlers/calculateDates";
 
 const useUpdate = (todo, targetId) => {
   const { id, queue, development, done } = todo;
@@ -20,6 +21,11 @@ const useUpdate = (todo, targetId) => {
     description: description,
     created: targetElem.created,
     deadline: deadline,
+    inWork: `${
+      calculateDates(targetElem.created) > 1
+        ? calculateDates(targetElem.created) + " days"
+        : calculateDates(targetElem.created) + " day"
+    }`,
   };
 
   const updatedTodos = {

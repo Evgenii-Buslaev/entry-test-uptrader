@@ -6,11 +6,20 @@ import {
   UPDATE_TODOS,
 } from "../actions/actions";
 
+import { calculateDates } from "../../handlers/calculateDates";
+
 export function initTodos(id) {
   return { type: INIT, data: { id: id, queue: [], development: [], done: [] } };
 }
 
 export function createTodo(id, title) {
+  const created = new Date()
+    .toLocaleString()
+    .split(",")[0]
+    .split(".")
+    .reverse()
+    .join("-");
+
   return {
     type: CREATE_TODO,
     data: {
@@ -19,12 +28,12 @@ export function createTodo(id, title) {
       todoId: Math.random(),
       title,
       description: "",
-      created: new Date()
-        .toLocaleString()
-        .split(",")[0]
-        .split(".")
-        .reverse()
-        .join("-"),
+      created: created,
+      inWork: `${
+        calculateDates(created) > 1
+          ? calculateDates(created) + " days"
+          : calculateDates(created) + " day"
+      }`,
     },
   };
 }
