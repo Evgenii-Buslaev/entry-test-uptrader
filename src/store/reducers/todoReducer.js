@@ -6,14 +6,22 @@ import {
   UPDATE_TODOS,
 } from "../actions/actions";
 
-const initalState = {
-  todos: [],
+const initalState = () => {
+  if (localStorage.getItem("todos")) {
+    return JSON.parse(localStorage.getItem("todos"));
+  } else {
+    return {
+      todos: [],
+    };
+  }
 };
 
-export const todoReducer = (state = initalState, action) => {
+export const todoReducer = (state = initalState(), action) => {
   switch (action.type) {
     case INIT:
-      return { ...state, todos: [...state.todos, action.data] };
+      const initState = { ...state, todos: [...state.todos, action.data] };
+      localStorage.setItem("todos", JSON.stringify(initState));
+      return initState;
 
     case CREATE_TODO:
       const elem = state.todos.find((elem) => elem.id === action.data.id);
@@ -24,13 +32,17 @@ export const todoReducer = (state = initalState, action) => {
       todo.number = elemIndex + 1;
 
       elem.queue.push(todo);
-      return {
+
+      const createState = {
         ...state,
         todos: [
           ...state.todos.filter((elem) => elem.id !== action.data.id),
           elem,
         ],
       };
+
+      localStorage.setItem("todos", JSON.stringify(createState));
+      return createState;
 
     case DELETE_TODO:
       const targetProject = state.todos.find(
@@ -47,16 +59,18 @@ export const todoReducer = (state = initalState, action) => {
       );
       const filteredElem = { id: targetProject.id, queue, development, done };
 
-      return {
+      const deleteState = {
         ...state,
         todos: [
           ...state.todos.filter((elem) => elem.id !== action.data.id),
           filteredElem,
         ],
       };
+      localStorage.setItem("todos", JSON.stringify(deleteState));
+      return deleteState;
 
     case UPDATE_TODOS_SECTIONS:
-      return {
+      const updateSectionsState = {
         ...state,
         todos: [
           ...state.todos.filter((elem) => elem.id !== action.data.id),
@@ -68,14 +82,19 @@ export const todoReducer = (state = initalState, action) => {
           },
         ],
       };
+      localStorage.setItem("todos", JSON.stringify(updateSectionsState));
+      return updateSectionsState;
+
     case UPDATE_TODOS:
-      return {
+      const updateTodosState = {
         ...state,
         todos: [
           ...state.todos.filter((elem) => elem.id !== action.data.id),
           action.data,
         ],
       };
+      localStorage.setItem("todos", JSON.stringify(updateTodosState));
+      return updateTodosState;
 
     default:
       return state;
