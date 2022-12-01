@@ -14,6 +14,7 @@ const useUpdate = (todo, targetId) => {
 
   const updatedElem = {
     id: id,
+    number: targetElem.number,
     todoId: targetId,
     title: title,
     description: description,
@@ -56,6 +57,7 @@ const useUpdate = (todo, targetId) => {
       deadline,
       setDeadline,
     },
+    targetElem,
     updatedTodos,
     updatedElem,
   };

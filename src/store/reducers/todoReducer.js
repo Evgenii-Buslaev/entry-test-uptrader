@@ -17,7 +17,13 @@ export const todoReducer = (state = initalState, action) => {
 
     case CREATE_TODO:
       const elem = state.todos.find((elem) => elem.id === action.data.id);
-      elem.queue.push(action.data);
+      const elemIndex =
+        elem.queue.length + elem.development.length + elem.done.length;
+
+      const todo = action.data;
+      todo.number = elemIndex + 1;
+
+      elem.queue.push(todo);
       return {
         ...state,
         todos: [

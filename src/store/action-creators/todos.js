@@ -15,6 +15,7 @@ export function createTodo(id, title) {
     type: CREATE_TODO,
     data: {
       id: Number(id),
+      number: null,
       todoId: Math.random(),
       title,
       description: "",

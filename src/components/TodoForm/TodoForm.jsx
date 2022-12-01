@@ -8,7 +8,10 @@ import styles from "./TodoForm.module.css";
 import useUpdate from "../../hooks/useUpdate";
 
 const TodoForm = ({ todo, targetId }) => {
-  const { state, updatedTodos, updatedElem } = useUpdate(todo, targetId);
+  const { state, updatedTodos, targetElem, updatedElem } = useUpdate(
+    todo,
+    targetId
+  );
   const {
     title,
     setTitle,
@@ -28,6 +31,7 @@ const TodoForm = ({ todo, targetId }) => {
 
   return (
     <form className={styles.form} onSubmit={submit}>
+      <div className={styles.number}>{targetElem.number}</div>
       <InputText text="Todo's title" value={title} change={setTitle} />
       <InputText
         text="Todo's description"
