@@ -8,15 +8,9 @@
   height: auto;
 }
 
-.submit {
-  margin: 2rem auto;
-  width: 200px;
-  height: 50px;
-  font-size: 1rem;
-  color: white;
-  border-radius: 10px;
-  background-color: rgba(22, 202, 127, 0.733);
-  cursor: pointer;
+.status {
+  position: absolute;
+  color: rgb(99, 13, 13);
 }
 
 .number {
@@ -42,10 +36,35 @@
   margin: 0.5rem auto;
 }
 
-.status {
-  position: absolute;
-  color: rgb(99, 13, 13);
+.subtaskForm {
+  margin: 0.5rem auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.subTaskBtn {
+  font-size: 1rem;
+  margin: 0.5rem 1rem;
+  padding: 0.4rem 0.5rem;
+  background-color: rgba(26, 85, 26, 0.63);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit {
+  margin: 2rem auto;
+  width: 200px;
+  height: 50px;
+  font-size: 1rem;
+  color: white;
+  border-radius: 10px;
+  background-color: rgba(22, 202, 127, 0.733);
+  cursor: pointer;
+}
+
 @media (max-width: 1150px) {
   .datesWrapper {
     flex-direction: column;
@@ -60,5 +79,8 @@
 @media (max-width: 1000px) {
   .number {
     font-size: 1rem;
+  }
+  .subtaskForm {
+    flex-direction: column;
   }
 }

@@ -35,6 +35,7 @@ export function createTodo(id, title) {
           : calculateDates(created) + " day"
       }`,
       status: "queue",
+      subtasks: [],
     },
   };
 }

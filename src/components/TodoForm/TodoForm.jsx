@@ -4,6 +4,7 @@ import InputText from "../../UI/InputText/InputText";
 import InputDate from "../../UI/InputDate/InputeDate";
 import InputFile from "../../UI/InputFile/InputFile";
 import Select from "../../UI/Select/Select";
+import SubtasksList from "../SubtasksList/SubtasksList";
 import { updateTodosProps } from "../../handlers/todos/todos";
 
 import styles from "./TodoForm.module.css";
@@ -25,6 +26,10 @@ const TodoForm = ({ todo, targetId }) => {
     setImportance,
     files,
     setFiles,
+    subtask,
+    setSubtask,
+    subtasks,
+    setSubtasks,
   } = state;
   const { created } = updatedElem;
 
@@ -68,6 +73,23 @@ const TodoForm = ({ todo, targetId }) => {
       <div className={styles.files}>{files}</div>
       <div className={styles.status}>Status: {targetElem.status}</div>
       <InputFile change={setFiles} />
+      <div className={styles.subtaskForm}>
+        <InputText text="Subtask's title" value={subtask} change={setSubtask} />
+        <button
+          type="button"
+          className={styles.subTaskBtn}
+          onClick={() => {
+            setSubtasks([
+              ...subtasks,
+              { id: Math.random(), title: subtask, done: false },
+            ]);
+            setSubtask("");
+          }}
+        >
+          Create subtask
+        </button>
+      </div>
+      <SubtasksList list={subtasks} change={setSubtasks} />
       <button type="submit" className={styles.submit}>
         Save changes
       </button>
