@@ -5,6 +5,7 @@ import InputDate from "../../UI/InputDate/InputeDate";
 import InputFile from "../../UI/InputFile/InputFile";
 import Select from "../../UI/Select/Select";
 import SubtasksList from "../SubtasksList/SubtasksList";
+import CommentsList from "../CommentsList/CommentsList";
 import { updateTodosProps } from "../../handlers/todos/todos";
 
 import styles from "./TodoForm.module.css";
@@ -30,6 +31,10 @@ const TodoForm = ({ todo, targetId }) => {
     setSubtask,
     subtasks,
     setSubtasks,
+    comment,
+    setComment,
+    comments,
+    setComments,
   } = state;
   const { created } = updatedElem;
 
@@ -90,6 +95,24 @@ const TodoForm = ({ todo, targetId }) => {
         </button>
       </div>
       <SubtasksList list={subtasks} change={setSubtasks} />
+      <div className={styles.subtaskForm}>
+        <InputText
+          text="Leave a comment..."
+          value={comment}
+          change={setComment}
+        />
+        <button
+          type="button"
+          className={styles.subTaskBtn}
+          onClick={() => {
+            setComments([...comments, { id: Math.random(), text: comment }]);
+            setComment("");
+          }}
+        >
+          Create comment
+        </button>
+      </div>
+      <CommentsList list={comments} />
       <button type="submit" className={styles.submit}>
         Save changes
       </button>

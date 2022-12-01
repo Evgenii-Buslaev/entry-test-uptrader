@@ -36,6 +36,7 @@ export function createTodo(id, title) {
       }`,
       status: "queue",
       subtasks: [],
+      comments: [],
     },
   };
 }

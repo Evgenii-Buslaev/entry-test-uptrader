@@ -1,0 +1,9 @@
+.list {
+  margin: 0.5rem auto;
+  width: 80%;
+}
+
+.comment {
+  margin: 0.5rem;
+  text-align: start;
+}

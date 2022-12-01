@@ -16,6 +16,8 @@ const useUpdate = (todo, targetId) => {
   const [files, setFiles] = useState(targetElem.files || "");
   const [subtask, setSubtask] = useState("");
   const [subtasks, setSubtasks] = useState(targetElem.subtasks);
+  const [comment, setComment] = useState("");
+  const [comments, setComments] = useState(targetElem.comments);
 
   const updatedElem = {
     id: id,
@@ -33,6 +35,7 @@ const useUpdate = (todo, targetId) => {
     importance: importance,
     files: files,
     subtasks: subtasks,
+    comments: comments,
   };
 
   const updatedTodos = {
@@ -77,6 +80,10 @@ const useUpdate = (todo, targetId) => {
       setSubtask,
       subtasks,
       setSubtasks,
+      comment,
+      setComment,
+      comments,
+      setComments,
     },
     targetElem,
     updatedTodos,
