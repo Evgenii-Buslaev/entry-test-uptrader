@@ -42,6 +42,10 @@
   margin: 0.5rem auto;
 }
 
+.status {
+  position: absolute;
+  color: rgb(99, 13, 13);
+}
 @media (max-width: 1150px) {
   .datesWrapper {
     flex-direction: column;

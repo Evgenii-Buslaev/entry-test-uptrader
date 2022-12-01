@@ -66,6 +66,7 @@ const TodoForm = ({ todo, targetId }) => {
         <div className={styles.number}>In work: {targetElem.inWork}</div>
       ) : null}
       <div className={styles.files}>{files}</div>
+      <div className={styles.status}>Status: {targetElem.status}</div>
       <InputFile change={setFiles} />
       <button type="submit" className={styles.submit}>
         Save changes
