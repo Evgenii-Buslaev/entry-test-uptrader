@@ -27,7 +27,15 @@ const removeTodoItem = (id, todoId, dispatch) => {
 };
 
 const updateAllColumns = (id, sections, dispatch) => {
-  dispatch(updateTodosSections(id, sections));
+  const queue = sections[0];
+  queue.forEach((elem) => (elem.status = "queue"));
+  const development = sections[1];
+  development.forEach((elem) => (elem.status = "development"));
+  const done = sections[2];
+  done.forEach((elem) => (elem.status = "done"));
+  console.log(done);
+
+  dispatch(updateTodosSections(id, [queue, development, done]));
 };
 
 const updateDropArray = (state, id) => {
