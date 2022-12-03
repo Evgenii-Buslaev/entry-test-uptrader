@@ -1,6 +1,5 @@
 # Тестовое задание "UpTrader"
 
-Описание тестового задания: https://github.com/UptraderTestTask/Junior-frontend.
 Ссылка на рабочее приложение: https://evgenii-buslaev.github.io/entry-test-uptrader/
 
 ## Описание
